@@ -110,4 +110,4 @@ GitHub个人访问令牌可以在GitHub设置中的"Developer settings" > "Perso
 
 # 感谢
 
-## （https://t.me/CMLiussss）
+## https://t.me/CMLiussss
