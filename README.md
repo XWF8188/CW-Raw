@@ -8,28 +8,28 @@
 
 我们的解决方案是使用Cloudflare Workers作为中间层，它替你安全地处理身份验证，让你可以安全地访问私有文件。
 ## 如何使用？ [视频教程](https://www.youtube.com/watch?v=T-bK5o96lqI)
-假设你的Cloudflare Workers项目部署在`raw.090227.xyz`，
+假设你的Cloudflare Workers项目部署在`raw.******.xyz`，
 
 而你要访问的私有文件是`https://raw.githubusercontent.com/XWF8188/CW-Raw/main/_worker.js`。
 
 ## 方法1：通过URL参数传递令牌
 最直接的方法是在URL中添加你的GitHub令牌作为参数：
 ```url
-https://raw.090227.xyz/cmliu/XWF8188/main/_worker.js?token=你的GitHub令牌
+https://raw.******.xyz/cmliu/XWF8188/main/_worker.js?token=你的GitHub令牌
 ```
 或者，如果你喜欢完整的原始URL：
 ```url
-https://raw.090227.xyz/https://raw.githubusercontent.com/XWF8188/CW-Raw/main/_worker.js?token=你的GitHub令牌
+https://raw.******.xyz/https://raw.githubusercontent.com/XWF8188/CW-Raw/main/_worker.js?token=你的GitHub令牌
 ```
 
 ## 方法2：在Workers中设置全局令牌
 如果你经常访问同一个私有仓库，可以在Workers设置中添加一个名为`GH_TOKEN`的变量，值为你的GitHub令牌。这样，你就可以直接访问，无需在URL中每次都包含令牌：
 ```url
-https://raw.090227.xyz/XWF8188/CW-Raw/main/_worker.js
+https://raw.******.xyz/XWF8188/CW-Raw/main/_worker.js
 ```
 或者，如果你喜欢完整的原始URL：
 ```url
-https://raw.090227.xyz/https://raw.githubusercontent.com/XWF8188/CW-Raw/main/_worker.js
+https://raw.******.xyz/https://raw.githubusercontent.com/XWF8188/CW-Raw/main/_worker.js
 ```
 
 ## 方法3：添加额外的访问控制（推荐）
@@ -40,11 +40,11 @@ https://raw.090227.xyz/https://raw.githubusercontent.com/XWF8188/CW-Raw/main/_wo
 
 然后，你的URL会是这样的：
 ```url
-https://raw.090227.xyz/XWF8188/CW-Raw/main/_worker.js?token=mysecretkey
+https://raw.******.xyz/XWF8188/CW-Raw/main/_worker.js?token=mysecretkey
 ```
 或者，如果你喜欢完整的原始URL：
 ```url
-https://raw.090227.xyz/https://raw.githubusercontent.com/XWF8188/CW-Raw/main/_worker.js?token=mysecretkey
+https://raw.******.xyz/https://raw.githubusercontent.com/XWF8188/CW-Raw/main/_worker.js?token=mysecretkey
 ```
 这种方法提供了双重安全：即使有人猜到了你的自定义密钥，他们仍然无法访问你的GitHub文件，因为GitHub令牌是安全地存储在Workers设置中的。
 
@@ -54,24 +54,24 @@ https://raw.090227.xyz/https://raw.githubusercontent.com/XWF8188/CW-Raw/main/_wo
 - `GH_NAME`：你的GitHub用户名（例如: **cmliu**）
 然后，你的URL会是这样的：
 ```url
-https://raw.090227.xyz/CW-Raw/main/_worker.js?token=sd123123
+https://raw.******.xyz/CW-Raw/main/_worker.js?token=sd123123
 ```
 
 - `GH_REPO`：你的GitHub仓库名（例如: **CW-Raw**，必须设置`GH_NAME`变量为前提）
 然后，你的URL会是这样的：
 ```url
-https://raw.090227.xyz/main/_worker.js?token=sd123123
+https://raw.******.xyz/main/_worker.js?token=sd123123
 ```
 
 - `GH_BRANCH`：你的GitHub仓库名（例如: **main**，必须设置`GH_NAME`和`GH_REPO`变量为前提）
 然后，你的URL会是这样的：
 ```url
-https://raw.090227.xyz/_worker.js?token=sd123123
+https://raw.******.xyz/_worker.js?token=sd123123
 ```
 
 **如您使用完整的原始URL，则以上变量将不会生效！**
 ```url
-https://raw.090227.xyz/https://raw.githubusercontent.com/XWF8188/CW-Raw/main/_worker.js?token=sd123123
+https://raw.******.xyz/https://raw.githubusercontent.com/XWF8188/CW-Raw/main/_worker.js?token=sd123123
 ```
 
 ## 如何设置这些变量？
@@ -100,7 +100,7 @@ GitHub个人访问令牌可以在GitHub设置中的"Developer settings" > "Perso
 | 变量名 | 示例 | 必填 | 备注 | 
 |--|--|--|--|
 | GH_TOKEN| `ghp_CgmlL2b5J8Z1soNUquc0bZblkbO3gKxhn13t`| ❌| 您的GitHub令牌 **token**|
-| TOKEN| `nicaibudaowo` | ❌| `GH_TOKEN`和`TOKEN`同时存在的时候会作为访问鉴权，单独赋值时的效果与`GH_TOKEN`相同|
+| TOKEN| `gchhxguvhcg` | ❌| `GH_TOKEN`和`TOKEN`同时存在的时候会作为访问鉴权，单独赋值时的效果与`GH_TOKEN`相同|
 | GH_NAME| `XWF8188` | ❌| 你的GitHub用户名 |
 | GH_REPO| `CW-Raw` | ❌| 你的GitHub仓库(必须设置`GH_NAME`变量为前提) |
 | GH_BRANCH| `main` | ❌| 你的GitHub仓库(必须设置`GH_NAME`和`GH_REPO`变量为前提) |
