@@ -109,5 +109,5 @@ GitHub个人访问令牌可以在GitHub设置中的"Developer settings" > "Perso
 | ERROR | `无法获取文件，检查路径或TOKEN是否正确。` |❌| 自定义错误提示 |
 
 # 感谢
-```url
-## https://t.me/CMLiussss
+
+## （https://t.me/CMLiussss）
